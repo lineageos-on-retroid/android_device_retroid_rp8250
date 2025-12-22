@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Firmware
+/dev/block/by-name/modem /vendor/firmware_mnt vfat ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0 defaults,slotselect
+
+# Metadata
+/dev/block/by-name/metadata /metadata ext4 nodev,noatime,nosuid,discard,data=journal,commit=1 check,formattable,first_stage_mount,metadata_csum
+
+# Misc
+/dev/block/by-name/misc /misc emmc defaults defaults
+
+# System
+system /system ext4 noatime,ro slotselect,logical,first_stage_mount
+
+# Vendor
+vendor /vendor ext4 noatime,ro slotselect,logical,first_stage_mount
+
+# ZRAM
+/dev/block/zram0 none swap defaults zramsize=50%
